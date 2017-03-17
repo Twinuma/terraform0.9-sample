@@ -1,0 +1,7 @@
+### https://raw.github.com/github/gitignore/9779d87d3d81ffacd90ae2470e7b3ffe566ffc71/Terraform.gitignore
+
+# Compiled files
+*.tfstate
+*.tfstate.backup
+
+
