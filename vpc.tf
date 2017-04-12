@@ -9,8 +9,9 @@ resource "aws_vpc" "vpc" {
     env = "${terraform.env}"
   }
 }
-// resource "aws_nat_gateway" "ngw" {
-//   allocation_id = "${aws_eip.nat.id}"
-//   subnet_id     = "${aws_subnet.frontend_1a.id}"
-//   depends_on    = ["aws_internet_gateway.gw"]
-// }
+
+resource "aws_vpc_endpoint" "private-s3" {
+    vpc_id = "${aws_vpc.main.id}"
+    service_name = "com.amazonaws.ap-northeast-1.s3"
+    route_table_ids = ["${aws_route_table.private_rt_a.id}", "${aws_route_table.private_rt_c.id}"]
+}
